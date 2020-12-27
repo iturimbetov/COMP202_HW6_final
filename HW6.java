@@ -1,8 +1,10 @@
+ 
+// Class to represent entire hash table 
 class HashMap
-{ 
-    
+{ 	
+    private BinarySearchTree bst; // the bst used to sort your elements
     private HashNode[] bucketArray; // the array to store the front of each LinkedList 
-    private int numBuckets; // the size of the array 
+    private int numBuckets = 10; // the size of the array 
     private int size; // the total number of elements in the HashMap
     private int hashing; // defines which hashing function to use, since there are 2, can be either 0 or 1
     
@@ -34,7 +36,8 @@ class HashMap
     } 
   
     public Advisor remove(Student key) 
-    { 
+    {  
+    	bst.delete(key);
     	// TODO: your code here to remove an element from the HashMap and return its corresponding value
         return null; 
     } 
@@ -42,13 +45,19 @@ class HashMap
     public Advisor get(Student key) 
     {
     	// TODO: your code here to get the corresponding value (Advisor) of the key (Student)
+    	// you have to implement this to make tests work
     	return null; 
     } 
   
     public void add(Student key, Advisor value) 
-    { 
+    {  
+    	bst.add(key);
     	// TODO: your code here to add the key-value pair to the HashMap
     } 
+    
+	public void printSorted() {
+    	// TODO: your code here to print all the keys (all students) that your HashMap contains
+	}
 }
 
 public class HW6 {
@@ -61,11 +70,11 @@ public class HW6 {
         Advisor dumbledore = new Advisor("Dumbledore", "Wizardy");
         map.add(harry, dumbledore); 
         map.add(new Student("Hermione", 3, 4.0), dumbledore); 
+        map.printSorted(); 
+        map.remove(harry); 
         map.add(new Student("Jesse", 4, 2.17), new Advisor("Walter White", "Chemistry")); 
         System.out.println(map.size()); 
-        System.out.println(map.remove(harry)); 
-        System.out.println(map.remove(harry)); 
-        System.out.println(map.size()); 
+        map.printSorted(); 
         System.out.println(map.isEmpty()); 
     } 
 } 

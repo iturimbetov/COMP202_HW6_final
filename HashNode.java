@@ -1,3 +1,4 @@
+
 // node of the LinkedList 
 public class HashNode
 { 
