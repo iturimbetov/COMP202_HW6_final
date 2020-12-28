@@ -18,21 +18,25 @@ class HashMap
     
     public boolean isEmpty() { return size() == 0; } 
     
-    private int hashFirst() {
+    private int hashFirst(Student key) {
     	// TODO:  your code here, the first hashing function
     	return 0;
     }
     
-    private int hashSecond() {
+    private int hashSecond(Student key) {
     	// TODO:  your code here, the second hashing function
     	return 0;
     }
   
     private int getBucketIndex(Student key) 
     { 
-    	/* TODO: use a hashing function to get the bucket index, 
-    	 depending on the "hashing" field value it's either first or second */
-        return 0; 
+	if (hashing == 0) {
+	    return hashFirst(Student key) % numBuckets;
+	} else if (hashing == 1) {
+	    return hashSecond(Student key) % numBuckets;
+	} else {
+	    return 0;
+	}
     } 
   
     public Advisor remove(Student key) 
